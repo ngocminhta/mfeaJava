@@ -2,7 +2,6 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.List;
 
-//import tasks.Knapsack;
 import tasks.TSP;
 import tasks.BPP;
 
