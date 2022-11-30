@@ -169,7 +169,7 @@ public class Individual {
     			BPPres[i] = BPPindx[i];
     		}
 			
-			return "BPP Bin Order=" + Arrays.toString(BPPres) + ", fitnessTask=" + fitnessTask +
+			return "BPP Bin Order = " + Arrays.toString(BPPres) + ", fitnessTask=" + fitnessTask +
 			  ", factorialRank=" + factorial_rank + ", skillFactor=" + skillFactor +
 			  ", scalarFitness=" + scalarFitness;
     	}

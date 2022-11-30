@@ -10,7 +10,7 @@ public class MFEA {
     private double rmp;
     private List<Task> tasks;
     private static final double LIMIT = 10000000000.0;
-    private static final int ITERATIONS = 1000;
+    private static final int ITERATIONS = 2000;
 
     public MFEA(List<Task> tasks, int numOfInd, double rmp, int timeResetPopulation) {
         this.tasks = tasks;
@@ -32,7 +32,7 @@ public class MFEA {
 
         int changeBest = 0;
 
-        for (int i = 0; i < ITERATIONS; i++) {
+        for (int i = 1; i <= ITERATIONS; i++) {
         	// reset poulation
             for (int ii = 0; ii < tasks.size(); ii++) {
                 Individual ind = population.getIndividualBestOfTask(ii);
