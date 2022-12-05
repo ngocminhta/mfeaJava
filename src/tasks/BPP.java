@@ -10,7 +10,6 @@ import util.BPPFileParser;
 
 public class BPP extends Task {
 	private int[] BPPDim;
-
 	public BPP(String fileName) {
 		super();
 

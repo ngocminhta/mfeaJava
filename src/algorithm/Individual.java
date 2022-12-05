@@ -9,6 +9,7 @@ import util.BPPFileParser;
 import util.TSPFileParser;
 import tasks.BPP;
 import tasks.TSP;
+import algorithm.Main;
 
 
 public class Individual {
@@ -111,7 +112,8 @@ public class Individual {
     
     int[] x = BPPFileParser.BPPDim;
     int dimBPP = x.length;
-    int dimTSP = TSPFileParser.graph.length;   
+    int dimTSP = TSPFileParser.graph.length;
+    List<Integer> TSPtype = Main.getTSPtype();
     
     @Override
     public String toString() {
@@ -124,8 +126,8 @@ public class Individual {
 		List<Double> cloned_TSP = new ArrayList<Double>(gen);
 		quicksort(cloned_TSP, TSPtmp, 0, gen.size()-1);
 
-		
-    	if (skillFactor == 0) { // TSP
+    	if (TSPtype.indexOf(skillFactor) != -1) { // TSP
+    		
     		List<Integer> TSPres = new ArrayList<Integer>();
     		for (int i = 0; i < TSPtmp.size(); i++) {
     			if (TSPtmp.get(i) <= dimTSP) {
@@ -138,13 +140,13 @@ public class Individual {
     				  ", scalarFitness=" + scalarFitness;
     	}
     	
-    	else if (skillFactor == 1) { // BPP
+    	else { //if (skillFactor % 2 == 1) { // BPP
     		List<Integer> xx = BPP.decode(gen);
     		int[] BPPtmp = new int[xx.size()];
     		int[] BPPindx = new int[xx.size()];
     		
     		int c = 1;
-    		int capacity = 100;
+    		int capacity = BPPFileParser.getCapacity();
     		int tmp = 0;
     		for (int i = 0; i <= xx.size() - 1; i++) {
     			if (xx.get(i) < x.length) {
@@ -173,7 +175,7 @@ public class Individual {
 			  ", factorialRank=" + factorial_rank + ", skillFactor=" + skillFactor +
 			  ", scalarFitness=" + scalarFitness;
     	}
-    	return null;
+    	//return null;
     }
     
     

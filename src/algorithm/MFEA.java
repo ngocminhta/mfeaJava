@@ -34,14 +34,14 @@ public class MFEA {
 
         for (int i = 1; i <= ITERATIONS; i++) {
         	// reset poulation
-            for (int ii = 0; ii < tasks.size(); ii++) {
-                Individual ind = population.getIndividualBestOfTask(ii);
-                if (bestSolution.get(ii).fitnessTask.get(ii) > ind.getFitnessTask().get(ii)) {
+            for (int ii = 1; ii <= tasks.size(); ii++) {
+                Individual ind = population.getIndividualBestOfTask(ii-1);
+                if (bestSolution.get(ii-1).fitnessTask.get(ii-1) > ind.getFitnessTask().get(ii-1)) {
                     changeBest = 0;
-                    bestSolution.set(ii, ind);
+                    bestSolution.set(ii-1, ind);
                 }
 
-                System.out.println(i + ":" + ii + ": " + ind.getFitnessTask());
+                System.out.println("Gen " + i + ": Best task " + ii + ": " + ind.getFitnessTask());
             }
             //reset
             changeBest++;

@@ -10,7 +10,8 @@ import java.util.Arrays;
 
 public class BPPFileParser {
 	public static int BPPDim[];
-
+	public static int c;
+	
     public BPPFileParser(String fileName) throws BPPException {
         this.BPPDim = parseFile(fileName);
     }
@@ -21,6 +22,10 @@ public class BPPFileParser {
     
     public int[] initDataBPP() {
     	return this.BPPDim;
+    }
+    
+    public static int getCapacity() {
+    	return c;
     }
     
     public static int[] addX(int arr[], int x)
@@ -40,6 +45,9 @@ public class BPPFileParser {
     	try {
             BufferedReader in = new BufferedReader(new FileReader(fileName));
             String line;
+            // read capacity
+            line = in.readLine();
+            int c = Integer.parseInt(line);
             
             while ((line = in.readLine()) != null) {
                 //strTok.nextToken(); // Discard the city number
