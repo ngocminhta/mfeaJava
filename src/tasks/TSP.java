@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import algorithm.Task;
+import algorithm.Main;
 import util.TSPException;
 import util.TSPFileParser;
 
@@ -22,6 +23,8 @@ public class TSP extends Task {
 			if (dimension < this.graph.length) {
 				dimension = this.graph.length;
 			}
+			Main.addDim(this.graph.length);
+			Main.addTSPtype();
 		} catch (TSPException e) {
 			e.printStackTrace();
 			System.exit(0);

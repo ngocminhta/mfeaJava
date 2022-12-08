@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import algorithm.Main;
 import algorithm.Task;
 import util.BPPException;
 import util.BPPFileParser;
@@ -21,6 +22,7 @@ public class BPP extends Task {
 			if (dimension < this.BPPDim.length) {
 				dimension = this.BPPDim.length;
 			}
+			Main.addDim(this.BPPDim.length);
 		} catch (BPPException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -63,7 +65,7 @@ public class BPP extends Task {
 		// chia so bin theo capacity
 		List<Integer> xx = decode(ind);
 		double c = 1;
-		int capacity = 100;
+		int capacity = BPPFileParser.getCapacity();
 		int tmp = 0;
 		for (int i = 0; i <= xx.size() - 1; i++) {
 			if (xx.get(i) < BPPDim.length) {

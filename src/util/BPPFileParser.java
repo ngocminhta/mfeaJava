@@ -47,8 +47,7 @@ public class BPPFileParser {
             String line;
             // read capacity
             line = in.readLine();
-            int c = Integer.parseInt(line);
-            
+            c = Integer.parseInt(line);
             while ((line = in.readLine()) != null) {
                 //strTok.nextToken(); // Discard the city number
                 int d = Integer.parseInt(line);

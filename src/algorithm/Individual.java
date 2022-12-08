@@ -111,8 +111,8 @@ public class Individual {
 	}
     
     int[] x = BPPFileParser.BPPDim;
-    int dimBPP = x.length;
-    int dimTSP = TSPFileParser.graph.length;
+    //int dimBPP = x.length;
+    //int dimTSP = TSPFileParser.graph.length;
     List<Integer> TSPtype = Main.getTSPtype();
     
     @Override
@@ -127,6 +127,7 @@ public class Individual {
 		quicksort(cloned_TSP, TSPtmp, 0, gen.size()-1);
 
     	if (TSPtype.indexOf(skillFactor) != -1) { // TSP
+    		int dimTSP = Main.dimTask.get(skillFactor);
     		
     		List<Integer> TSPres = new ArrayList<Integer>();
     		for (int i = 0; i < TSPtmp.size(); i++) {
@@ -141,6 +142,7 @@ public class Individual {
     	}
     	
     	else { //if (skillFactor % 2 == 1) { // BPP
+    		int dimBPP = Main.dimTask.get(skillFactor);
     		List<Integer> xx = BPP.decode(gen);
     		int[] BPPtmp = new int[xx.size()];
     		int[] BPPindx = new int[xx.size()];
@@ -149,7 +151,7 @@ public class Individual {
     		int capacity = BPPFileParser.getCapacity();
     		int tmp = 0;
     		for (int i = 0; i <= xx.size() - 1; i++) {
-    			if (xx.get(i) < x.length) {
+    			if (xx.get(i) < dimBPP) {
     				if (tmp + x[xx.get(i)] > capacity) {
         				c += 1;
         				tmp = x[xx.get(i)];
