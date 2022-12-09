@@ -6,15 +6,15 @@ import tasks.TSP;
 import tasks.BPP;
 
 public class Main {
-	public static List<Integer> TSPtype = new ArrayList<>();
+	public static List<Boolean> typeTask = new ArrayList<>();
 	public static List<Integer> dimTask = new ArrayList<>();
 	public static List<Task> tasks = new ArrayList<>();
 	public static void addDim(Integer newTask) {
 	    dimTask.add(newTask);
 	}
-	public static void addTSPtype() {
-	    TSPtype.add(tasks.size());
-	    System.out.println(TSPtype);
+	public static void addType(Boolean newType) {
+		// assume True = TSP and False = BPP
+	    typeTask.add(newType);
 	}
 	
     public static void main(String[] args) {
@@ -29,7 +29,7 @@ public class Main {
         
     }
     
-    public static List<Integer> getTSPtype() {
-    	return TSPtype;
+    public static List<Boolean> getTypeTask() {
+    	return typeTask;
     }
 }

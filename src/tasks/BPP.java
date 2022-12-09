@@ -10,7 +10,8 @@ import util.BPPException;
 import util.BPPFileParser;
 
 public class BPP extends Task {
-	private int[] BPPDim;
+	private int[] objects;
+	
 	public BPP(String fileName) {
 		super();
 
@@ -18,11 +19,12 @@ public class BPP extends Task {
 
 		try {
 			parser = new BPPFileParser(fileName);
-			this.BPPDim = parser.getDim();
-			if (dimension < this.BPPDim.length) {
-				dimension = this.BPPDim.length;
+			this.objects = parser.getDim();
+			if (dimension < this.objects.length) {
+				dimension = this.objects.length;
 			}
-			Main.addDim(this.BPPDim.length);
+			Main.addDim(this.objects.length);
+			Main.addType(false);
 		} catch (BPPException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -68,13 +70,13 @@ public class BPP extends Task {
 		int capacity = BPPFileParser.getCapacity();
 		int tmp = 0;
 		for (int i = 0; i <= xx.size() - 1; i++) {
-			if (xx.get(i) < BPPDim.length) {
-				if (tmp + BPPDim[xx.get(i)] > capacity) {
+			if (xx.get(i) < objects.length) {
+				if (tmp + objects[xx.get(i)] > capacity) {
 					c += 1;
-					tmp = BPPDim[xx.get(i)];
+					tmp = objects[xx.get(i)];
 				}
 				else {
-					tmp += BPPDim[xx.get(i)];
+					tmp += objects[xx.get(i)];
 				}
 			}
 		}

@@ -89,31 +89,27 @@ public class Individual {
 	        while (list.get(++i) < P)
 	            if (i >= right)
 	                break;
-	        // Now, list[i]≥P
+	        // Now, list[i] ≥ P
 	        while (list.get(--j) > P)
 	            if (j <= left)
 	                break;
-	        // Now, list[j]≤P
+	        // Now, list[j] ≤ P
 	        if (i >= j)
 	            break; // break the for-loop
 	        else {
-	            // swap(list[i],list[j]);
 	            Collections.swap(list, i, j);
 	        	Collections.swap(index, i, j);
 	        }
 	    }
 	    if (j == left)
 	        return j;
-	    // swap (list[left],list[j]);
 	    Collections.swap(list, left, j);
 	    Collections.swap(index, left, j);
 	    return j;
 	}
     
-    int[] x = BPPFileParser.BPPDim;
-    //int dimBPP = x.length;
-    //int dimTSP = TSPFileParser.graph.length;
-    List<Integer> TSPtype = Main.getTSPtype();
+    int[] x = BPPFileParser.objects;
+    List<Boolean> typeTask = Main.getTypeTask();
     
     @Override
     public String toString() {
@@ -126,7 +122,7 @@ public class Individual {
 		List<Double> cloned_TSP = new ArrayList<Double>(gen);
 		quicksort(cloned_TSP, TSPtmp, 0, gen.size()-1);
 
-    	if (TSPtype.indexOf(skillFactor) != -1) { // TSP
+    	if (typeTask.get(skillFactor)) { // TSP
     		int dimTSP = Main.dimTask.get(skillFactor);
     		
     		List<Integer> TSPres = new ArrayList<Integer>();

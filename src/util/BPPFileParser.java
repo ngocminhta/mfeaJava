@@ -9,19 +9,19 @@ import java.util.StringTokenizer;
 import java.util.Arrays;
 
 public class BPPFileParser {
-	public static int BPPDim[];
+	public static int objects[];
 	public static int c;
 	
     public BPPFileParser(String fileName) throws BPPException {
-        this.BPPDim = parseFile(fileName);
+        this.objects = parseFile(fileName);
     }
 
     public int[] getDim() {
-        return this.BPPDim;
+        return this.objects;
     }
     
     public int[] initDataBPP() {
-    	return this.BPPDim;
+    	return this.objects;
     }
     
     public static int getCapacity() {
@@ -41,7 +41,7 @@ public class BPPFileParser {
     }
     
     private static int[] parseFile(String fileName) throws BPPException {
-    	int BPPDim[] = new int[0];
+    	int objects[] = new int[0];
     	try {
             BufferedReader in = new BufferedReader(new FileReader(fileName));
             String line;
@@ -51,13 +51,13 @@ public class BPPFileParser {
             while ((line = in.readLine()) != null) {
                 //strTok.nextToken(); // Discard the city number
                 int d = Integer.parseInt(line);
-                BPPDim = addX(BPPDim,d);
+                objects = addX(objects,d);
             }
     	}
     	catch (IOException e) {
             throw new BPPException("Could not read file " + "'" + fileName + "'!");
         }
     	
-    return BPPDim;
+    return objects;
     }
 }

@@ -24,7 +24,7 @@ public class TSP extends Task {
 				dimension = this.graph.length;
 			}
 			Main.addDim(this.graph.length);
-			Main.addTSPtype();
+			Main.addType(true);
 		} catch (TSPException e) {
 			e.printStackTrace();
 			System.exit(0);
